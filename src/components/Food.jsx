@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import {data} from "../data/data";
 
-function Food() {
+function Food({handleClick}) {
     const [foods, setFoods] = useState(data)
 
     function filterType(category) {
@@ -50,7 +50,10 @@ function Food() {
             <div className='grid grid-cols-2 lg:grid-cols-4 gap-6 pt-4'>
                 {foods.map((item,index) => (
                     <div key={index} className='border shadow-lg rounded-lg hover:scale-105 duration-300'>
-                        <img className='w-full h-[200px] object-cover rounded-t-lg' src={item.image} alt={item.name}/>
+                        <div className='relative'>
+                            <img className='w-full h-[200px] object-cover rounded-t-lg' src={item.image} alt={item.name}/>
+                            <button onClick={() => handleClick(item)} className='absolute bottom-2 right-2 border border-white bg-orange-500/60 text-white ml-2 duration-200 hover:bg-orange-600 hover:bottom-3'>In Cart</button>
+                        </div>
                         <div className='flex justify-between px-2 py-4'>
                             <p className='font-bold'>{item.name}</p>
                             <p>

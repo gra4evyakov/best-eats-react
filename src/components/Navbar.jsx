@@ -4,9 +4,11 @@ import {BsCartFill, BsFillSafeFill} from "react-icons/bs";
 import {TbTruckDelivery} from "react-icons/tb";
 import {FaUserFriends, FaWallet} from "react-icons/fa";
 import {MdFavorite, MdHelp} from "react-icons/md";
+import Carts from "./Carts";
 
-function Navbar() {
+function Navbar({cart, cartCounter, removeItem, price}) {
     const [nav, setNav] = useState(false)
+    const [showCart, setShowCart] = useState(false)
 
     return (
         <div className='max-w-[1640px] mx-auto flex justify-between items-center p-4'>
@@ -27,8 +29,9 @@ function Navbar() {
                 <AiOutlineSearch size={25}/>
                 <input className='bg-transparent p-2 focus: outline-none w-full' type="text" placeholder='Search foods'/>
             </div>
-            <button className='bg-black text-white hidden md:flex items-center py-2 rounded-full'>
+            <button onClick={() => setShowCart(!showCart)} className='relative bg-black text-white flex items-center py-2 rounded-full ml-3'>
                 <BsCartFill size={20} className='mr-2' /> Cart
+                {cartCounter === 0 ? null : <span className='absolute top-[-.7rem] right-0 px-1 bg-orange-600 text-white rounded-xl'>{cartCounter}</span>}
             </button>
             {nav ? <div className='bg-black/80 fixed w-full h-screen z-10 top-0 left-0'></div>
                 : ''}
@@ -45,6 +48,13 @@ function Navbar() {
                         <li className='text-xl py-4 flex'><BsFillSafeFill size={25} className='mr-4'/> Best Ones</li>
                         <li className='text-xl py-4 flex'><FaUserFriends size={25} className='mr-4'/> Invite Friends</li>
                     </ul>
+                </nav>
+            </div>
+            <div className={showCart ? 'fixed top-0 right-0 w-[300px] h-screen bg-white z-10 duration-300' : 'fixed top-0 right-[-100%] w-[300px] h-screen bg-white z-10 duration-300'}>
+                <AiOutlineClose onClick={() => setShowCart(!showCart)} size={30} className='absolute right-4 top-4 cursor-pointer'/>
+                <h2 className=' font-bold text-3xl p-4'>Cart</h2>
+                <nav>
+                    <Carts cart={cart} removeItem={removeItem} price={price}/>
                 </nav>
             </div>
         </div>
