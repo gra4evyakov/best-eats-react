@@ -11,14 +11,14 @@ function App() {
     const [price, setPrice] = useState(0)
     function handleClick(item) {
         cart.push(item)
-        setPrice(prevState => price + item.price.length)
+        setPrice(prevState => price + item.price)
         setCartCounter(prevState => cartCounter + 1)
     }
     function removeItem(item, index) {
         if (cartCounter > 0) {
             setCart([...cart.slice(0, index), ...cart.slice(index + 1)])
             setCartCounter(prevState => cartCounter - 1)
-            setPrice(prevState => price - item.price.length)
+            setPrice(prevState => price - item.price)
         }
     }
 

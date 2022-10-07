@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import {AiFillTag, AiOutlineClose, AiOutlineMenu, AiOutlineSearch} from "react-icons/ai";
+import {AiFillTag, AiOutlineClose, AiOutlineMenu} from "react-icons/ai";
 import {BsCartFill, BsFillSafeFill} from "react-icons/bs";
 import {TbTruckDelivery} from "react-icons/tb";
 import {FaUserFriends, FaWallet} from "react-icons/fa";
@@ -9,7 +9,6 @@ import Carts from "./Carts";
 function Navbar({cart, cartCounter, removeItem, price}) {
     const [nav, setNav] = useState(false)
     const [showCart, setShowCart] = useState(false)
-    const [slider, setSlider] = useState(true)
 
     return (
         <div className='max-w-[1640px] mx-auto flex justify-between items-center p-4'>
@@ -17,20 +16,13 @@ function Navbar({cart, cartCounter, removeItem, price}) {
                 <div onClick={() => setNav(!nav)} className='cursor-pointer'>
                     <AiOutlineMenu size={30}/>
                 </div>
-                <h1 className='relative bottom-2 right-2 text-xl sm:static sm:text-2xl ld:text-3xl px-2'>
-                    Best <span className='absolute top-3.5 left-4 font-bold sm:static'>Eats</span>
+                <h1 className='text-3xl ml-2 pb-1 lg:text-4xl'>
+                    Best <span className='font-bold'>Eats</span>
                 </h1>
-                <div className='relative hidden lg:flex items-center bg-gray-200 rounded-full p-1 text-[14px] w-[100px] h-[45px]'>
-                    <p onClick={() => setSlider(!slider)} className={slider ? 'absolute p-2 bg-black text-white rounded-full right-1 duration-200' : 'absolute p-2 bg-black text-white rounded-full right-8 duration-200'}>{slider ? 'Pickup' : 'Delivery'}</p>
-                </div>
             </div>
 
-            <div className='bg-gray-200 rounded-full flex items-center px-2 w-[200px] sm: w-[400px] lg: w-[500px]'>
-                <AiOutlineSearch size={25}/>
-                <input className='bg-transparent p-2 focus: outline-none w-full' type="text" placeholder='Search foods'/>
-            </div>
             <button onClick={() => setShowCart(!showCart)} className='relative bg-black text-white flex items-center py-2 rounded-full ml-3'>
-                <BsCartFill size={20} className='mr-2' /> Cart
+                <BsCartFill size={20} className='sm:mr-1' /> <span className='hidden sm:inline mr-2'>Козрина</span>
                 {cartCounter === 0 ? null : <span className='absolute top-[-.7rem] right-0 px-1 bg-orange-600 text-white rounded-xl'>{cartCounter}</span>}
             </button>
             {nav ? <div className='bg-black/80 fixed w-full h-screen z-10 top-0 left-0'></div>
@@ -40,19 +32,19 @@ function Navbar({cart, cartCounter, removeItem, price}) {
                 <h2 className='text-2xl p-4'>Best <span className='font-bold'>Eats</span></h2>
                 <nav>
                     <ul className='flex flex-col p-4 text-gray-800'>
-                        <li className='text-xl py-4 flex'><TbTruckDelivery size={25} className='mr-4'/> Orders</li>
-                        <li className='text-xl py-4 flex'><MdFavorite size={25} className='mr-4'/> Favorites</li>
-                        <li className='text-xl py-4 flex'><FaWallet size={25} className='mr-4'/> Wallet</li>
-                        <li className='text-xl py-4 flex'><MdHelp size={25} className='mr-4'/> Help</li>
-                        <li className='text-xl py-4 flex'><AiFillTag size={25} className='mr-4'/> Promotions</li>
-                        <li className='text-xl py-4 flex'><BsFillSafeFill size={25} className='mr-4'/> Best Ones</li>
-                        <li className='text-xl py-4 flex'><FaUserFriends size={25} className='mr-4'/> Invite Friends</li>
+                        <li className='text-xl py-4 flex'><TbTruckDelivery size={25} className='mr-4'/> Заказы</li>
+                        <li className='text-xl py-4 flex'><MdFavorite size={25} className='mr-4'/> Любимое</li>
+                        <li className='text-xl py-4 flex'><FaWallet size={25} className='mr-4'/> Кошелёк</li>
+                        <li className='text-xl py-4 flex'><MdHelp size={25} className='mr-4'/> Помощь</li>
+                        <li className='text-xl py-4 flex'><AiFillTag size={25} className='mr-4'/> Акции</li>
+                        <li className='text-xl py-4 flex'><BsFillSafeFill size={25} className='mr-4'/> Лучшее</li>
+                        <li className='text-xl py-4 flex'><FaUserFriends size={25} className='mr-4'/> Пригласи друзей</li>
                     </ul>
                 </nav>
             </div>
             <div className={showCart ? 'fixed top-0 right-0 w-[300px] h-screen bg-white z-10 duration-300' : 'fixed top-0 right-[-100%] w-[300px] h-screen bg-white z-10 duration-300'}>
                 <AiOutlineClose onClick={() => setShowCart(!showCart)} size={30} className='absolute right-4 top-4 cursor-pointer'/>
-                <h2 className=' font-bold text-3xl p-4'>Cart</h2>
+                <h2 className=' font-bold text-3xl p-4'>Корзина</h2>
                 <nav>
                     <Carts cart={cart} removeItem={removeItem} price={price}/>
                 </nav>
