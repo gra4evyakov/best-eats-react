@@ -1,15 +1,23 @@
 import React, {useState} from "react";
 
-function Carts({cart, removeItem, price}) {
+function Carts({cart, removeItem, price, handleClick}) {
     const [slider, setSlider] = useState(false)
     return (
         <>
-            <div className='flex flex-col gap-5'>
-                {cart.map((item, index) => (
+            <div className='flex flex-col gap-5 h-full'>
+                {cart.map((item, index) =>
+                    (
                     <div key={index} className='flex justify-between items-center px-4 py-2 text-gray-800 bg-gray-100 rounded-3xl'>
                         <div className='flex flex-col'>
                             <p className='text-sm py-1 font-bold'>{item.name}</p>
-                            <p className='text-sm'>{item.price}</p>
+                            <div className='flex gap-4 items-center'>
+                                <p className='text-sm'>{item.price}</p>
+                                <div className='flex gap-1 bg-white border border-black rounded-xl items-center'>
+                                    <button onClick={() => handleClick(item, '-')} className='text-sm bg-gray-200'>-</button>
+                                    <p className='text-sm'>{item.count ? item.count : null}</p>
+                                    <button onClick={() => handleClick(item, '+')} className='text-sm bg-gray-200'>+</button>
+                                </div>
+                            </div>
                         </div>
                         <button onClick={() => removeItem(item, index)} className='border border-black py-1 px-2 rounded-2xl text-sm'>remove</button>
                     </div>

@@ -52,7 +52,7 @@ function Food({handleClick}) {
                     <div key={index} className='border shadow-lg rounded-lg hover:scale-105 duration-300'>
                         <div className='relative'>
                             <img className='w-full h-[200px] object-cover rounded-t-lg' src={item.image} alt={item.name}/>
-                            <button onClick={() => handleClick(item)} className='absolute bottom-2 right-2 border border-white bg-orange-500/60 text-white ml-2 duration-200 hover:bg-orange-600 hover:bottom-3'>Заказать</button>
+                            <button onClick={() => handleClick(item, '+')} className='absolute bottom-2 right-2 border border-white bg-orange-500/60 text-white ml-2 duration-200 hover:bg-orange-600 hover:bottom-3'>Заказать</button>
                         </div>
                         <div className='flex justify-between px-2 py-4'>
                             <p className='font-bold'>{item.name}</p>

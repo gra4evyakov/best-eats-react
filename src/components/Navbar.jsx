@@ -6,7 +6,7 @@ import {FaUserFriends, FaWallet} from "react-icons/fa";
 import {MdFavorite, MdHelp} from "react-icons/md";
 import Carts from "./Carts";
 
-function Navbar({cart, cartCounter, removeItem, price}) {
+function Navbar({cart, cartCounter, removeItem, price, handleClick}) {
     const [nav, setNav] = useState(false)
     const [showCart, setShowCart] = useState(false)
 
@@ -42,11 +42,11 @@ function Navbar({cart, cartCounter, removeItem, price}) {
                     </ul>
                 </nav>
             </div>
-            <div className={showCart ? 'fixed top-0 right-0 w-[300px] h-screen bg-white z-10 duration-300' : 'fixed top-0 right-[-100%] w-[300px] h-screen bg-white z-10 duration-300'}>
+            <div className={showCart ? 'fixed top-0 right-0 p-2 w-[300px] h-screen overflow-y-auto bg-white z-10 duration-300' : 'fixed top-0 right-[-100%] w-[300px] bg-white z-10 duration-300'}>
                 <AiOutlineClose onClick={() => setShowCart(!showCart)} size={30} className='absolute right-4 top-4 cursor-pointer'/>
                 <h2 className=' font-bold text-3xl p-4'>Корзина</h2>
                 <nav>
-                    <Carts cart={cart} removeItem={removeItem} price={price}/>
+                    <Carts cart={cart} removeItem={removeItem} price={price} handleClick={handleClick}/>
                 </nav>
             </div>
         </div>
