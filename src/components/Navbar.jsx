@@ -9,6 +9,7 @@ import Carts from "./Carts";
 function Navbar({cart, cartCounter, removeItem, price}) {
     const [nav, setNav] = useState(false)
     const [showCart, setShowCart] = useState(false)
+    const [slider, setSlider] = useState(true)
 
     return (
         <div className='max-w-[1640px] mx-auto flex justify-between items-center p-4'>
@@ -16,12 +17,11 @@ function Navbar({cart, cartCounter, removeItem, price}) {
                 <div onClick={() => setNav(!nav)} className='cursor-pointer'>
                     <AiOutlineMenu size={30}/>
                 </div>
-                <h1 className='text-2xl sm:text-3xl ld:text-4xl px-2'>
-                    Best <span className='font-bold'>Eats</span>
+                <h1 className='relative bottom-2 right-2 text-xl sm:static sm:text-2xl ld:text-3xl px-2'>
+                    Best <span className='absolute top-3.5 left-4 font-bold sm:static'>Eats</span>
                 </h1>
-                <div className='hidden lg:flex items-center bg-gray-200 rounded-full p-1 text-[14px]'>
-                    <p className='bg-black text-white rounded-full p-2'>Delivery</p>
-                    <p className='p-2'>Pickup</p>
+                <div className='relative hidden lg:flex items-center bg-gray-200 rounded-full p-1 text-[14px] w-[100px] h-[45px]'>
+                    <p onClick={() => setSlider(!slider)} className={slider ? 'absolute p-2 bg-black text-white rounded-full right-1 duration-200' : 'absolute p-2 bg-black text-white rounded-full right-8 duration-200'}>{slider ? 'Pickup' : 'Delivery'}</p>
                 </div>
             </div>
 
