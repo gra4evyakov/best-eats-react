@@ -10,8 +10,9 @@ function Navbar({cart, cartCounter, removeItem, price, handleClick}) {
     const [nav, setNav] = useState(false)
     const [showCart, setShowCart] = useState(false)
 
+
     return (
-        <div className='max-w-[1640px] mx-auto flex justify-between items-center p-4'>
+        <div className='fixed w-full z-20 max-w-[1640px] mx-auto bg-white flex justify-between items-center p-4'>
             <div className='flex items-center'>
                 <div onClick={() => setNav(!nav)} className='cursor-pointer'>
                     <AiOutlineMenu size={30}/>
