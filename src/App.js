@@ -10,16 +10,17 @@ function App() {
     const [cartCounter, setCartCounter] = useState(0)
     const [price, setPrice] = useState(0)
 
-
     function handleClick(item, symbol, ) {
         if (cart.includes(item) && symbol === '+') {
             item.count += 1
             setPrice(prevState => price + item.price)
             setCartCounter(prevState => cartCounter + 1)
         } else if(symbol === '-') {
-            item.count -= 1
-            setPrice(prevState => price - item.price)
-            setCartCounter(prevState => cartCounter - 1)
+            if (item.count > 1) {
+                item.count -= 1
+                setPrice(prevState => price - item.price)
+                setCartCounter(prevState => cartCounter - 1)
+            }
         } else {
             setCart([...cart, item])
             item.count = 1

@@ -23,7 +23,7 @@ function Navbar({cart, cartCounter, removeItem, price, handleClick}) {
             </div>
 
             <button onClick={() => setShowCart(!showCart)} className='relative bg-black text-white flex items-center py-2 rounded-full ml-3'>
-                <BsCartFill size={20} className='sm:mr-1' /> <span className='hidden sm:inline mr-2'>Козрина</span>
+                <BsCartFill size={20} className='sm:mr-1' /> <span className='hidden sm:inline'>Корзина</span>
                 {cartCounter === 0 ? null : <span className='absolute top-[-.7rem] right-0 px-1 bg-orange-600 text-white rounded-xl'>{cartCounter}</span>}
             </button>
             {nav ? <div className='bg-black/80 fixed w-full h-screen z-10 top-0 left-0'></div>
